@@ -7,7 +7,7 @@ var req;
 function putdata(res)
 { 
   $.each(res.result[0].Posts , function(i,post){ 
-     $("body").append('<li><a href='+'"'+post[1]+'"'+'>'+(i+1)+".  "+post[0]+'</a></li>');
+     $("body").append('<a href='+'"'+post[1]+'"'+'><li>'+(i+1)+".  "+post[0]+'</li></a>');
     });
 
   

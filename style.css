@@ -25,7 +25,7 @@ a{
   color: #000000
 }
 
-li:nth-child(3n+1)
+a:nth-child(3n+1) li
 {
   background: rgba(226,226,226,1);
 background: -moz-linear-gradient(-45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
@@ -36,7 +36,7 @@ background: -ms-linear-gradient(-45deg, rgba(226,226,226,1) 0%, rgba(219,219,219
 background: linear-gradient(135deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=1 );
 }
-li:nth-child(3n+2)
+a:nth-child(3n+2) li
 {
   background: rgba(226,226,226,1);
   background: -moz-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
@@ -47,7 +47,7 @@ li:nth-child(3n+2)
   background: linear-gradient(to bottom, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0 );
 }
-li:nth-child(3n)
+a:nth-child(3n) li
 {
   background: rgba(226,226,226,1);
   background: -moz-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
@@ -59,7 +59,7 @@ li:nth-child(3n)
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=1 );
 }
 
-li:hover{
+a li:hover{
   background-image: -webkit-gradient(
   linear,
   left top,
