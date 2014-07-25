@@ -4,18 +4,36 @@ var req;
 
 
 
+function putdata(res)
+{ 
+  $.each(res.result[0].Posts , function(i,post){ 
+     $("body").append('<li><a href='+'"'+post[1]+'"'+'>'+post[0]+'</a></li>');
+    });
 
+}
+
+
+function fetchdata(){
+  
+  req =  new XMLHttpRequest();
+  req.open("GET",'http://hackernewslatestapi.herokuapp.com/',true);
+  req.send();
+  req.onload = function(){
+  res = JSON.parse(req.responseText);
+  putdata(res);
+  };
+
+}
 
 
 $(document).ready(function(){
 
-req =  new XMLHttpRequest();
-req.open("GET",'http://hackernewslatestapi.herokuapp.com/',true);
-req.send();
-req.onload = function(){
-  res = JSON.parse(req.responseText);
-  console.log(res);
-};
+  fetchdata();
 
+  $("body").on('click',"a", function(){
+       chrome.tabs.create({url: $(this).attr('href')});
+       return false;
+     });
 
 });
+
