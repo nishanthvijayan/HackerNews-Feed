@@ -22,7 +22,7 @@ li{
 
 a{
   text-decoration: none;
-  color: #000000
+  color: #000000;
 }
 
 a:nth-child(3n+1) li
