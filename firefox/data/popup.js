@@ -7,7 +7,7 @@ var req;
 function putdata(res)
 { 
   $.each(res.result[0].Posts , function(i,post){ 
-     $("body").append('<a href='+'"'+post[1]+'"'+'><li>'+(i+1)+".  "+post[0]+'</li></a>');
+     $("body").append('<a data='+'"'+post[1]+'"'+'><li>'+(i+1)+".  "+post[0]+'</li></a>');
     });
 
   
@@ -29,13 +29,19 @@ function fetchdata(){
 
 
 $(document).ready(function(){
-
   fetchdata();
+  // update feeds every 5 minutes
+  setInterval(function(){
+    $("a").remove();
+    fetchdata() }, 300000)
 
+
+//sends "link to be opened" to main.js
   $("body").on('click',"a", function(){
-       chrome.tabs.create({url: $(this).attr('href')});
+       self.port.emit("postClicked",$(this).attr('data'));
        return false;
      });
+
 
 });
 
