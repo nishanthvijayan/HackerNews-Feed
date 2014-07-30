@@ -61,16 +61,18 @@ a:nth-child(3n) li
 }
 
 a li:hover{
-  background-image: -webkit-gradient(
+
+background-image: -webkit-gradient(
   linear,
-  left top,
   left bottom,
-  color-stop(0, #0E5C1D),
-  color-stop(1, #059627)
+  left top,
+  color-stop(0, #D68915),
+  color-stop(1, #FA7100)
 );
-background-image: -o-linear-gradient(bottom, #0E5C1D 0%, #059627 100%);
-background-image: -moz-linear-gradient(bottom, #0E5C1D 0%, #059627 100%);
-background-image: -webkit-linear-gradient(bottom, #0E5C1D 0%, #059627 100%);
-background-image: -ms-linear-gradient(bottom, #0E5C1D 0%, #059627 100%);
-background-image: linear-gradient(to bottom, #0E5C1D 0%, #059627 100%);
-};
+background-image: -o-linear-gradient(top, #D68915 0%, #FA7100 100%);
+background-image: -moz-linear-gradient(top, #D68915 0%, #FA7100 100%);
+background-image: -webkit-linear-gradient(top, #D68915 0%, #FA7100 100%);
+background-image: -ms-linear-gradient(top, #D68915 0%, #FA7100 100%);
+background-image: linear-gradient(to top, #D68915 0%, #FA7100 100%);
+
+}
