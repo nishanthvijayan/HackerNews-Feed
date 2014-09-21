@@ -24,7 +24,7 @@ def getData():
 
     for row in rows:
         if(row.string!=None and ("http" in row["href"])):
-            posts.append([  str(row.string.encode('ascii','ignore'))    , str(row["href"])    ])
+            posts.append([  str(row.string.encode('ascii','ignore'))    , str(row["href"].encode('ascii','ignore'))    ])
 
     return posts
 
