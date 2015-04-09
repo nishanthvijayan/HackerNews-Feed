@@ -2,9 +2,15 @@ import os
 from flask import Flask, jsonify
 import mechanize
 from bs4 import BeautifulSoup
+from flask.ext.cache import Cache   
 
 app = Flask(__name__)
 
+# define the cache config keys, remember that it can be done in a settings file
+app.config['CACHE_TYPE'] = 'simple'
+
+# register the cache instance and binds it on to your app 
+app.cache = Cache(app)
 
 def getData():
     
@@ -32,7 +38,7 @@ def getData():
 
 
 @app.route('/')
-@app.route('/data.json')
+@app.cache.cached(timeout=300) # cache for 5 minutes
 def index():
     
     results = getData()
