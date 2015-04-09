@@ -40,9 +40,17 @@ $(document).ready(function(){
   }
   else{
     // cache is fresh
-    setTimeout(function(){$("body").append(localStorage.cache)},1000);
+    setTimeout(function(){
+      $("body").append(localStorage.cache);
+      if(localStorage.scrollTop){
+        document.body.scrollTop = localStorage.scrollTop;
+      }
+    },1000);
   }
 
+  addEventListener('scroll', function(){
+    localStorage.scrollTop = document.body.scrollTop;
+  });
 
   $("body").on('click',"a", function(){
        chrome.tabs.create({url: $(this).attr('href')});
