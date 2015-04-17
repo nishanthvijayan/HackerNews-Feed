@@ -2,8 +2,8 @@
   "name": "hackernews-feed",
   "title": "HackerNews-feed",
   "id": "jid1-JAKHAfLpsTwcIg",
-  "description": "Shows current 30 posts from news.ycombinator.com",
+  "description": "Shows current 20 posts from news.ycombinator.com",
   "author": "Nishanth Vijayan",
   "license": "MPL 2.0",
-  "version": "0.2.1"
+  "version": "0.3.0"
 }
