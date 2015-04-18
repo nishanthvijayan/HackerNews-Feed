@@ -1,35 +1,49 @@
-
-var res;
-var req;
-var htmlString;
-var now;
-
 function putdata(res)
 { 
-  htmlString = "";
-  $.each(res.result[0].Posts , function(i,post){ 
-     htmlString +='<a href='+'"'+post[1]+'"'+'><li>'+(i+1)+".  "+post[0]+'</li></a>';
-    });
-  $("body").append(htmlString);
+  
+  // removes the present posts
+  $(".content > li").remove();
+  $("hr").remove();
+  
+  for (i = 0; i < 20; i++){ 
+    
+    post = res.result[0].Posts[i];
+    $(".content").append('<li data='+'"'+post[1]+'"'+'><h3>'+(i+1)+".  "+post[0]+'<h3><br></li><hr>');
+  
+  }
   
 }
 
 
 function fetchdata(){
   
+  imgToggle();
   req =  new XMLHttpRequest();
   req.open("GET",'http://hackernewslatestapi.herokuapp.com/',true);
   req.send();
   req.onload = function(){
-	  res = JSON.parse(req.responseText);
+	  imgToggle();
+
+    res = JSON.parse(req.responseText);
 	  putdata(res);
 
-	  localStorage.cache = htmlString;
+    now = (new Date()).getTime()/1000;
+	  localStorage.cache  = req.responseText;
 	  localStorage.time = now;
   };
+  req.onerror = function(){
+    imgToggle();
+  }
+
 
 }
 
+// toggles between the loading gif,reload icon.
+function imgToggle(){
+  src = $('.loading').attr('src');
+  if(src=="refresh-white.png") $(".loading").attr("src","ajax-loader.gif");
+  else $(".loading").attr("src","refresh-white.png");
+}
 
 $(document).ready(function(){
 
@@ -40,22 +54,32 @@ $(document).ready(function(){
   }
   else{
     // cache is fresh
-    setTimeout(function(){
-      $("body").append(localStorage.cache);
-      if(localStorage.scrollTop){
-        document.body.scrollTop = localStorage.scrollTop;
-      }
-    },1000);
+    putdata(JSON.parse(localStorage.cache));
+    if(localStorage.scrollTop){
+      document.body.scrollTop = localStorage.scrollTop;
+    }
   }
 
   addEventListener('scroll', function(){
     localStorage.scrollTop = document.body.scrollTop;
   });
 
-  $("body").on('click',"a", function(){
-       chrome.tabs.create({url: $(this).attr('href')});
+  $("body").on('click',"li", function(){
+       chrome.tabs.create({url: $(this).attr('data')});
        return false;
      });
+
+  $("body").on('click',"a", function(){
+     chrome.tabs.create({url: $(this).attr('data')});
+     return false;
+   });
+
+  // this makes sure that fetchdata() is called only when the icon
+  // is reload icon and not when it is the loading gif.
+  $("body").on('click',".loading", function(){
+    src = $('.loading').attr('src');
+    if(src=="refresh-white.png") fetchdata();
+  });
 
 });
 
