@@ -5,10 +5,20 @@ function putdata(res)
   $("hr").remove();
   
   for (i = 0; i < 20; i++){ 
-    
     post = res.result[0].Posts[i];
-    $(".content").append('<li data='+'"'+post[1]+'"'+'><h3>'+(i+1)+".  "+post[0]+'<h3><br></li><hr>');
-  
+
+    var node = document.createElement("li");
+    node.data = '"'+post[1]+'"';
+
+    var nameText = document.createTextNode((i+1)+".  "+post[0]);
+    var nameNode = document.createElement("h3");
+    nameNode.appendChild(nameText);
+    node.appendChild(nameNode);
+
+    node.appendChild(document.createElement("br"));
+    
+    document.getElementById("content").appendChild(node);
+    document.getElementById("content").appendChild(document.createElement("hr"));
   }
 
 }
@@ -47,7 +57,7 @@ $(document).ready(function(){
 
   //sends "link to be opened" to main.js
   $("body").on('click',"li", function(){
-    self.port.emit("postClicked",$(this).attr('data'));
+    self.port.emit("postClicked",this.data);
     return false;
   });
   
