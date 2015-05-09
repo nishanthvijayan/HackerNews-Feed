@@ -4,12 +4,11 @@
 }
 
 body {
-  min-width: 400px;
   background-color: #ffffff; 
 }
 
 header{
-  background-color: #ff6600;/*#fc9b00*/
+  background-color: #ff6600;
   height: 50px;
   color : #ffffff;
   position: fixed;
@@ -26,7 +25,7 @@ header > h3{
 }
 
 .loading{
-  position: fixed;
+  position: absolute;
   margin-top: 15px;
   left: 90%;
   height: 20px;
@@ -70,4 +69,9 @@ footer > a{
   text-decoration: underline;
   cursor: pointer;
   font-size: small;
+}
+iframe{
+  position: absolute;
+  margin-top: 15px;
+  left: 70%;
 }

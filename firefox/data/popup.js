@@ -64,7 +64,7 @@ $(document).ready(function(){
   });
 
   setTimeout(function(){
-    $("footer").prepend('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><iframe src="https://ghbtns.com/github-btn.html?user=nishanthvijayan&repo=hackernews-feed&type=star&count=true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe></span>');
+    $("header > h3").after('<span><iframe src="https://ghbtns.com/github-btn.html?user=nishanthvijayan&repo=hackernews-feed&type=star&count=true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe></span>');
   },1000);
 
 });
