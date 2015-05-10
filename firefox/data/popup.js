@@ -1,14 +1,14 @@
 function putdata(res)
 { 
   // removes the present posts
-  $(".content > li").remove();
+  $("#content > li").remove();
   $("hr").remove();
   
   for (i = 0; i < 20; i++){ 
     post = res.result[0].Posts[i];
 
     var node = document.createElement("li");
-    node.data = '"'+post[1]+'"';
+    node.data = post[1];
 
     var nameText = document.createTextNode((i+1)+".  "+post[0]);
     var nameNode = document.createElement("h3");
