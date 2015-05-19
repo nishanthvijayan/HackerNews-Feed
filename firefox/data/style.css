@@ -43,7 +43,7 @@ li{
 }
 
 li:hover{
-  background-color: #f9d69c;
+  background-color: #fdf7e6;
 }
 
 li > h3{
@@ -54,8 +54,8 @@ li > h3{
 hr {
     border: none;
     height: 1px;
-    color: #f9d69c;
-    background-color: #f9d69c;
+    color: #fbe5c1;
+    background-color: #fbe5c1;
 }
 
 footer{
@@ -75,4 +75,9 @@ iframe{
   position: absolute;
   margin-top: 15px;
   left: 10%;
+}
+li > h5{
+  font-weight: normal;
+  display: inline;
+  cursor: pointer;
 }

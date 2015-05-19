@@ -16,6 +16,13 @@ function putdata(res)
     node.appendChild(nameNode);
 
     node.appendChild(document.createElement("br"));
+
+    if (post[3]=='1')var scoreText = document.createTextNode('( '+post[3] + ' point )');
+    else var scoreText = document.createTextNode('( '+post[3] + ' points )');
+    var scoreNode = document.createElement("h5");
+    scoreNode.appendChild(scoreText);
+    scoreNode.data = "https://news.ycombinator.com/item?id="+post[2];
+    node.appendChild(scoreNode);
     
     document.getElementById("content").appendChild(node);
     document.getElementById("content").appendChild(document.createElement("hr"));
@@ -61,6 +68,10 @@ $(document).ready(function(){
     return false;
   });
   
+  $("body").on('click',"h5", function(){
+    self.port.emit("postClicked",this.data);
+    return false;
+  });
   $("body").on('click',"a", function(){
     self.port.emit("postClicked",$(this).attr('data'));
     return false;
