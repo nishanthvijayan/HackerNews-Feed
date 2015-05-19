@@ -1,7 +1,6 @@
 import os
 from flask import Flask, jsonify
-import mechanize
-from bs4 import BeautifulSoup
+from hackernews import HackerNews
 from flask.ext.cache import Cache   
 
 app = Flask(__name__)
@@ -15,27 +14,13 @@ app.cache = Cache(app)
 def getData():
     
     posts= []
-    
-    browser = mechanize.Browser()
-    browser.set_handle_robots(False)
-    cookies = mechanize.CookieJar()
-    browser.addheaders = [('User-agent', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:25.0) Gecko/20100101 Firefox/25.0')]
+    hn = HackerNews()
 
-    page = browser.open("https://news.ycombinator.com/")
-    soup = BeautifulSoup(page,"html.parser")
-
-    rows = soup.select("td > a")
-
-
-
-    for row in rows:
-        if(row.string!=None and ("http" in row["href"])):
-            posts.append([  str(row.string.encode('ascii','ignore'))    , str(row["href"].encode('ascii','ignore'))    ])
+    for story_id in hn.top_stories(limit=20):
+        item  =  hn.get_item(story_id)
+        posts.append([  str(item.title.encode('ascii','ignore'))    , str(item.url.encode('ascii','ignore')) , story_id , item.score  ])
 
     return posts
-
-
-
 
 @app.route('/')
 @app.cache.cached(timeout=300) # cache for 5 minutes
