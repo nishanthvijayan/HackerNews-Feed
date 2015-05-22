@@ -71,7 +71,7 @@ footer > a{
   cursor: pointer;
   font-size: small;
 }
-iframe{
+.starbutton{
   position: absolute;
   margin-top: 15px;
   left: 10%;
