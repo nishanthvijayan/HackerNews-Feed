@@ -38,7 +38,6 @@ function fetchdata(){
   req.open("GET",'http://hackernewslatestapi.herokuapp.com/',true);
   req.send();
   req.onload = function(){
-    $("header > h3").after('<span><iframe class="starbutton" src="https://ghbtns.com/github-btn.html?user=nishanthvijayan&repo=hackernews-feed&type=star&count=false" frameborder="0" scrolling="0" width="100px" height="20px"></iframe></span>');
     $("footer").append('<span>&nbsp;&nbsp;&nbsp;<iframe src="https://ghbtns.com/github-btn.html?user=nishanthvijayan&type=follow&count=false" frameborder="0" scrolling="0" width="170px" height="20px"></iframe></span>');
     res = JSON.parse(req.responseText);
     imgToggle();

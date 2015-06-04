@@ -71,11 +71,6 @@ footer > a{
   cursor: pointer;
   font-size: small;
 }
-.starbutton{
-  position: absolute;
-  margin-top: 15px;
-  left: 10%;
-}
 li > h5{
   font-weight: normal;
   display: inline;
