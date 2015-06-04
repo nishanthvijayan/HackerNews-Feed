@@ -29,6 +29,11 @@ function popup(){
   newsfeed.show({ position: button });
  };
 
+exports.main = function (options, callbacks) {
+    if(options.loadReason === 'install') {
+      tabs.open("https://github.com/nishanthvijayan/hackernews-feed/");
+    }
+};
 
 newsfeed.port.on("postClicked", function (text) {
   tabs.open(text);

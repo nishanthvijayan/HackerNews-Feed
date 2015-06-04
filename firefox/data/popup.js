@@ -3,6 +3,7 @@ function putdata(res)
   // removes the present posts
   $("#content > li").remove();
   $("hr").remove();
+  $("span").remove();
   
   for (i = 0; i < 20; i++){ 
     post = res.result[0].Posts[i];
@@ -38,10 +39,10 @@ function fetchdata(){
   req.open("GET",'http://hackernewslatestapi.herokuapp.com/',true);
   req.send();
   req.onload = function(){
-    $("footer").append('<span>&nbsp;&nbsp;&nbsp;<iframe src="https://ghbtns.com/github-btn.html?user=nishanthvijayan&type=follow&count=false" frameborder="0" scrolling="0" width="170px" height="20px"></iframe></span>');
     res = JSON.parse(req.responseText);
     imgToggle();
     putdata(res);
+    $("footer").append('<span>&nbsp;&nbsp;&nbsp;<iframe src="https://ghbtns.com/github-btn.html?user=nishanthvijayan&type=follow&count=false" frameborder="0" scrolling="0" width="170px" height="20px"></iframe></span>');
   };
   req.onerror = function(){
     imgToggle();
