@@ -5,21 +5,16 @@ function putdata(res)
   $(".content > li").remove();
   $("hr").remove();
   
-  for (i = 0; i < 20; i++){ 
-    
-    post = res.result[0].Posts[i];
-    $(".content").append('<li data='+'"'+post[1]+'"'+'><h3>'+(i+1)+".  "+post[0]+'<h3><br></li><hr>');
-  
-  }
-  
+  $.each(res,function(i,post){
+    $(".content").append('<li data='+'"'+post.url+'"'+'><h3>'+(i+1)+".  "+post.title+'<h3><br></li><hr>');
+  });
 }
-
 
 function fetchdata(){
   
   imgToggle();
   req =  new XMLHttpRequest();
-  req.open("GET",'http://hackernewslatestapi.herokuapp.com/',true);
+  req.open("GET",'http://node-hnapi.herokuapp.com/news',true);
   req.send();
   req.onload = function(){
 	  imgToggle();
@@ -34,8 +29,6 @@ function fetchdata(){
   req.onerror = function(){
     imgToggle();
   }
-
-
 }
 
 // toggles between the loading gif,reload icon.

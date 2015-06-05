@@ -3,10 +3,10 @@
 
   "name": "Hacker News Feed",
   "description": "Have a quick peek at the top posts on Hacker news. ",
-  "version": "0.0.2",
+  "version": "0.1.0",
 
   "permissions": [
-    "http://hackernewslatestapi.herokuapp.com/",
+    "http://node-hnapi.herokuapp.com/",
     "tabs"
   ],
   "short_name": "Hacker News Feed",
