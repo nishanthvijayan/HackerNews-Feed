@@ -78,7 +78,9 @@ $(document).ready(function(){
     self.port.emit("postClicked",$(this).attr('data'));
     return false;
   });
-
+  $("body").on('click',".gh-btn", function(){
+    self.port.emit("postClicked", "https://github.com/nishanthvijayan/HackerNews-Feed");
+  });
   // this makes sure that fetchdata() is called only when the icon
   // is reload icon and not when it is the loading gif.
   $("body").on('click',".loading", function(){

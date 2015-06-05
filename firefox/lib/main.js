@@ -30,7 +30,7 @@ function popup(){
  };
 
 exports.main = function (options, callbacks) {
-    if(options.loadReason === 'install') {
+    if(options.loadReason === 'install' || options.loadReason === 'update') {
       tabs.open("https://github.com/nishanthvijayan/hackernews-feed/");
     }
 };
