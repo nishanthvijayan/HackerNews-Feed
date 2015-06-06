@@ -4,7 +4,8 @@ function putdata(res)
   $("#content > li").remove();
   $("hr").remove();
   $("span").remove();
-  
+  $("#content").append("<hr>");
+
   $.each(res,function(i,post){
 
     var node = document.createElement("li");
@@ -40,7 +41,6 @@ function fetchdata(){
     res = JSON.parse(req.responseText);
     imgToggle();
     putdata(res);
-    $("footer").append('<span>&nbsp;&nbsp;&nbsp;<iframe src="https://ghbtns.com/github-btn.html?user=nishanthvijayan&type=follow&count=false" frameborder="0" scrolling="0" width="170px" height="20px"></iframe></span>');
   };
   req.onerror = function(){
     imgToggle();

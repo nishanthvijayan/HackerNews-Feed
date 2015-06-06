@@ -8,10 +8,9 @@ body {
 }
 
 header{
-  background-color: #ff6600;
+  background-color: #ffffff;
   height: 50px;
-  color : #ffffff;
-  position: fixed;
+  color :  #ff6600;
   width: 100%;
   top:0%;
   text-align: center;
@@ -20,7 +19,8 @@ header{
 header > h3{
   margin-top: 15px;
   text-align: center;
-  font-weight: bold;
+  font-weight: 100;
+  font-size: 125%;
   display: inline-block;
 }
 
@@ -37,26 +37,31 @@ header > h3{
   position: absolute;
   margin-top: 15px;
   left: 80%;
-  height: 20px;
-  width: 20px;
-}
-#content{
-  margin-top: 50px;
+  height: 22px;
+  width: 22px;
 }
 
 li{
   padding: 15px;
   list-style-type:none;
   display: block;
+  min-width: 30px;
 }
-
 li:hover{
   background-color: #fdf7e6;
 }
 
 li > h3{
-  font-weight: normal;
-  font-size: 95%;
+  font-weight: 500;
+  font-size: 90%;
+}
+li > h5{
+  font-weight: 400;
+  display: inline;
+  cursor: pointer;
+}
+li > h5:hover{
+	text-decoration: underline;
 }
 
 hr {
@@ -68,19 +73,13 @@ hr {
 
 footer{
   padding: 15px;
-  color: white;
-  background-color: #ff6600;
+  color: #ff6600;
+  background-color: #fdf7e6;
   text-align: center;
 }
 
 footer > a{
-  color: white;
   text-decoration: underline;
   cursor: pointer;
   font-size: small;
-}
-li > h5{
-  font-weight: normal;
-  display: inline;
-  cursor: pointer;
 }
