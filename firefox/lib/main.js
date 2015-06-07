@@ -6,7 +6,7 @@ var tabs = require("sdk/tabs");
 
 var newsfeed = panels.Panel({
   width: 475,
-  height: 500,
+  height: 100,
   contentURL: self.data.url("popup.html"),
   contentScriptFile: [self.data.url("jquery.js"),self.data.url("popup.js")]
 });
@@ -39,3 +39,6 @@ newsfeed.port.on("postClicked", function (text) {
   tabs.open(text);
 });
 
+newsfeed.port.on("resizePanel", function () {
+  newsfeed.resize(475,500);
+});

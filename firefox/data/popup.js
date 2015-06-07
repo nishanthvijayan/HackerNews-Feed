@@ -45,6 +45,7 @@ function fetchdata(){
   req.open("GET",'http://node-hnapi.herokuapp.com/news',true);
   req.send();
   req.onload = function(){
+    self.port.emit("resizePanel");
     res = JSON.parse(req.responseText);
     imgToggle();
     putdata(res);
