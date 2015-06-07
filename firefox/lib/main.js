@@ -14,7 +14,7 @@ var newsfeed = panels.Panel({
 
 var button = buttons.ActionButton({
   id: "HackerNews-feed",
-  label: "Displays current feeds from HackerNews",
+  label: "Have a quick peek at the current Hacker News front page",
   icon: {
     "16": "./icon16.png",
     "32": "./icon32.png",
@@ -30,7 +30,7 @@ function popup(){
  };
 
 exports.main = function (options, callbacks) {
-    if(options.loadReason === 'install' || options.loadReason === 'update') {
+    if(options.loadReason === 'install' || options.loadReason === 'upgrade') {
       tabs.open("https://github.com/nishanthvijayan/hackernews-feed/");
     }
 };

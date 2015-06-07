@@ -19,19 +19,15 @@ function putdata(res)
     if(post.type=='link'){
       var domainText = document.createTextNode('('+post.domain+')');
       var domainNode = document.createElement("span");
+      domainNode.className = "domainName";
       domainNode.appendChild(domainText);
       node.appendChild(domainNode);
       node.appendChild(document.createElement("br"));
     }
     node.appendChild(document.createElement("br"));
 
-    score ='';
-    if (post.points=='1') score = post.points + ' point   • ';
-    else if(post.points!=null) score = post.points + ' points   • ';
-
-    if (post.comments_count=='1') comments = post.comments_count + ' comment ';
-    else comments = post.comments_count + ' comments ';
-
+    score = (post.points!=null) ? post.points + '▲ ' : '';
+    comments = (post.comments_count=='1') ? post.comments_count + ' comment ' : post.comments_count + ' comments ';
     detailText=document.createTextNode(score +' '+comments);
     
     var scoreNode = document.createElement("h5");

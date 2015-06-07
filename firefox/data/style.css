@@ -63,7 +63,7 @@ li > h5{
 li > h5:hover{
 	text-decoration: underline;
 }
-span{
+.domainName{
   font-size: 85%;
   color : #707070;
 }
