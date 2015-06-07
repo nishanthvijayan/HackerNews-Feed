@@ -3,7 +3,7 @@ function putdata(res)
   // removes the present posts
   $("#content > li").remove();
   $("hr").remove();
-  $("span").remove();
+
   $("#content").append("<hr>");
 
   $.each(res,function(i,post){
@@ -16,7 +16,15 @@ function putdata(res)
     nameNode.appendChild(nameText);
     node.appendChild(nameNode);
 
+    if(post.type=='link'){
+      var domainText = document.createTextNode('('+post.domain+')');
+      var domainNode = document.createElement("span");
+      domainNode.appendChild(domainText);
+      node.appendChild(domainNode);
+      node.appendChild(document.createElement("br"));
+    }
     node.appendChild(document.createElement("br"));
+
     score ='';
     if (post.points=='1') score = post.points + ' point   • ';
     else if(post.points!=null) score = post.points + ' points   • ';

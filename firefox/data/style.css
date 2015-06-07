@@ -63,7 +63,10 @@ li > h5{
 li > h5:hover{
 	text-decoration: underline;
 }
-
+span{
+  font-size: 85%;
+  color : #707070;
+}
 hr {
     border: none;
     height: 1px;
