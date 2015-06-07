@@ -17,12 +17,17 @@ function putdata(res)
     node.appendChild(nameNode);
 
     node.appendChild(document.createElement("br"));
+    score ='';
+    if (post.points=='1') score = post.points + ' point   • ';
+    else if(post.points!=null) score = post.points + ' points   • ';
 
-    scoreText=document.createTextNode('');
-    if (post.points=='1')var scoreText = document.createTextNode('( '+post.points + ' point )');
-    else if(post.points!=null) var scoreText = document.createTextNode('( '+post.points + ' points )');
+    if (post.comments_count=='1') comments = post.comments_count + ' comment ';
+    else comments = post.comments_count + ' comments ';
+
+    detailText=document.createTextNode(score +' '+comments);
+    
     var scoreNode = document.createElement("h5");
-    scoreNode.appendChild(scoreText);
+    scoreNode.appendChild(detailText);
     scoreNode.data = "https://news.ycombinator.com/item?id="+post.id;
     node.appendChild(scoreNode);
     
