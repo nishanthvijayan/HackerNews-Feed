@@ -6,12 +6,14 @@
 body {
   background-color: #ffffff; 
 }
-
+.fixed{
+  position: fixed;
+  width: 100%;
+}
 header{
   background-color: #ffffff;
   height: 50px;
   color :  #ff6600;
-  width: 100%;
   top:0%;
   text-align: center;
 }
@@ -23,7 +25,9 @@ header > h3{
   font-size: 125%;
   display: inline-block;
 }
-
+#content{
+  padding-top: 50px;
+}
 .loading{
   cursor: pointer;
   position: absolute;

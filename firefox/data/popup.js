@@ -2,9 +2,7 @@ function putdata(res)
 { 
   // removes the present posts
   $("#content > li").remove();
-  $("hr").remove();
-
-  $("#content").append("<hr>");
+  $("#content > hr").remove();
 
   $.each(res,function(i,post){
 
