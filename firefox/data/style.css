@@ -58,6 +58,10 @@ li:hover{
 li > h3{
   font-weight: 500;
   font-size: 90%;
+  cursor: pointer;
+}
+li > h3:hover{
+  text-decoration: underline;
 }
 li > h5{
   font-weight: 400;
@@ -67,7 +71,7 @@ li > h5{
 li > h5:hover{
 	text-decoration: underline;
 }
-.domainName{
+.detail{
   font-size: 85%;
   color : #707070;
 }

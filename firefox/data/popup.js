@@ -7,17 +7,17 @@ function putdata(res)
   $.each(res,function(i,post){
 
     var node = document.createElement("li");
-    node.data = post.url;
 
     var nameText = document.createTextNode((i+1)+".  "+post.title);
     var nameNode = document.createElement("h3");
+    nameNode.data = post.url;
     nameNode.appendChild(nameText);
     node.appendChild(nameNode);
 
     if(post.type=='link'){
       var domainText = document.createTextNode('('+post.domain+')');
       var domainNode = document.createElement("span");
-      domainNode.className = "domainName";
+      domainNode.className = "detail";
       domainNode.appendChild(domainText);
       node.appendChild(domainNode);
       node.appendChild(document.createElement("br"));
@@ -25,13 +25,21 @@ function putdata(res)
     node.appendChild(document.createElement("br"));
 
     score = (post.points!=null) ? post.points + '▲ ' : '';
-    comments = (post.comments_count=='1') ? post.comments_count + ' comment ' : post.comments_count + ' comments ';
+    comments = (post.comments_count=='1') ? ' • '+post.comments_count + ' comment ' : ' • '+post.comments_count + ' comments ';
     detailText=document.createTextNode(score +' '+comments);
     
     var scoreNode = document.createElement("h5");
     scoreNode.appendChild(detailText);
     scoreNode.data = "https://news.ycombinator.com/item?id="+post.id;
+    scoreNode.className = "detail";
     node.appendChild(scoreNode);
+
+    var timeText = document.createTextNode(' | '+post.time_ago);
+    var timeNode = document.createElement("span");
+    timeNode.className = "detail";
+    timeNode.appendChild(timeText);
+    node.appendChild(timeNode);
+    node.appendChild(document.createElement("br"));
     
     document.getElementById("content").appendChild(node);
     document.getElementById("content").appendChild(document.createElement("hr"));
@@ -71,7 +79,7 @@ $(document).ready(function(){
 
 
   //sends "link to be opened" to main.js
-  $("body").on('click',"li", function(){
+  $("body").on('click',"li > h3", function(){
     self.port.emit("postClicked",this.data);
     return false;
   });
