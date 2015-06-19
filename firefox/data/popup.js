@@ -10,7 +10,8 @@ function putdata(res)
 
     var nameText = document.createTextNode((i+1)+".  "+post.title);
     var nameNode = document.createElement("h3");
-    nameNode.data = post.url;
+    if(post.url.substring(0,4) == "item")nameNode.data = 'https://news.ycombinator.com/'+post.url;
+    else nameNode.data = post.url;
     nameNode.appendChild(nameText);
     node.appendChild(nameNode);
 
