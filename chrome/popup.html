@@ -1,19 +1,26 @@
 <!doctype html>
 <html>
   <head>
+    <meta charset="utf-8" />
     <title>Hacker News</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="jquery.js"></script>
     <script src="popup.js"></script>
   </head>
   <body style="min-height: 200px">
-    <header>
-      <h3>Hacker News</h3><img class="loading" src="refresh-white.png" />
-    </header>
-    <div class="content"></div>
+    <div class="fixed">
+      <header>
+        <h2>Hacker News</h2>
+        <img class="gh-btn" src="github.png"></img>
+        <img class="loading" src="refresh-white.png" />
+      </header>
+      <hr>
+    </div>
+    <div id="content"></div>
     <footer>
       <a data='https://news.ycombinator.com/'>HN</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <a data='https://github.com/nishanthvijayan/HackerNews-Feed/issues'>Bugs/Suggestions?</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a data='https://github.com/nishanthvijayan/HackerNews-Feed/'>View Project</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <a data='https://gratipay.com/nishanthvijayan'>Donate</a>
     </footer>
   </body>
