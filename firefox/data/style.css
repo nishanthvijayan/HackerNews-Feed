@@ -44,6 +44,17 @@ header > h3{
   height: 22px;
   width: 22px;
 }
+.up-btn{
+  cursor: pointer;
+  position: absolute;
+  margin-top: 15px;
+  left: 5%;
+  height: 22px;
+  width: 22px;
+  display: none;
+  border-radius: 50%;
+  border: 1px solid #fbe5c1;
+}
 
 li{
   padding: 15px;

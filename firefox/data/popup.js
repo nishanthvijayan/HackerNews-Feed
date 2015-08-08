@@ -106,5 +106,13 @@ $(document).ready(function(){
     if(src=="refresh-white.png") fetchdata();
   });
 
+	$("body").on('click',".up-btn", function(){
+    window.scrollTo(0, 0);
+  });
+
+  addEventListener('scroll', function(){
+    if($(".up-btn").css("display")=="none")$(".up-btn").show();
+  });
+
 });
 
