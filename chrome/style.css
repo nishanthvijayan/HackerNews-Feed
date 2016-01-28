@@ -26,6 +26,11 @@ header > h2 {
   text-align: center;
   font-weight: 100;
   display: inline-block;
+  cursor: pointer;
+}
+
+header > h2:hover {
+  text-decoration: underline;
 }
 
 #content {
@@ -90,17 +95,4 @@ hr {
   height: 1px;
   color: #fbe5c1;
   background-color: #fbe5c1;
-}
-
-footer {
-  padding: 15px;
-  color: #ff6600;
-  background-color: #fdf7e6;
-  text-align: center;
-}
-
-footer > a {
-  text-decoration: underline;
-  cursor: pointer;
-  font-size: small;
 }

@@ -104,8 +104,8 @@ $(document).ready(function(){
     return false;
   });
   
-  $("body").on('click',"a", function(){
-    chrome.tabs.create({url: this.data});
+  $("body").on('click',"header > h2", function(){
+    chrome.tabs.create({ url: 'https://news.ycombinator.com/' });
     return false;
   });
 
