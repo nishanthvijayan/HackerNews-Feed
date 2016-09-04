@@ -67,8 +67,8 @@ function fetchdata(){
 // toggles between the loading gif,reload icon.
 function imgToggle(){
   src = $('.loading').attr('src');
-  if(src=="refresh-white.png") $(".loading").attr("src","ajax-loader.gif");
-  else $(".loading").attr("src","refresh-white.png");
+  if(src=="img/refresh-white.png") $(".loading").attr("src","img/ajax-loader.gif");
+  else $(".loading").attr("src","img/refresh-white.png");
 }
 
 $(document).ready(function(){
@@ -103,7 +103,7 @@ $(document).ready(function(){
   // is reload icon and not when it is the loading gif.
   $("body").on('click',".loading", function(){
     src = $('.loading').attr('src');
-    if(src=="refresh-white.png") fetchdata();
+    if(src=="img/refresh-white.png") fetchdata();
   });
 
 	$("body").on('click',".up-btn", function(){

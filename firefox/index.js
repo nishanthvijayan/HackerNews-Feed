@@ -26,11 +26,11 @@ var button = buttons.ActionButton({
   id: "HackerNews-feed",
   label: "Have a quick peek at the current Hacker News front page",
   icon: {
-    "16": "./icon16.png",
-    "32": "./icon32.png",
-    "48": "./icon48.png",
-    "64": "./icon48.png",
-    "128":"./icon128.png"
+    "16": "./img/icon16.png",
+    "32": "./img/icon32.png",
+    "48": "./img/icon48.png",
+    "64": "./img/icon48.png",
+    "128":"./img/icon128.png"
   },
   onClick: displayPopup
 })
