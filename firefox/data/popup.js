@@ -126,12 +126,7 @@ $(document).ready(function(){
     self.port.emit("postClicked", "https://github.com/nishanthvijayan/HackerNews-Feed");
   });
 
-  // this makes sure that fetchdata() is called only when the icon
-  // is reload icon and not when it is the loading gif.
-  $("body").on('click', ".loading", function(){
-    src = $('.loading').attr('src');
-    if(src == "img/refresh-white.png") fetchdata();
-  });
+  $("body").on('click', ".loading", fetchdata);
 
   $("body").on('click', ".up-btn", function(){
     window.scrollTo(0, 0);
