@@ -1,9 +1,16 @@
 {
-  "name": "hackernews-feed",
   "title": "Hacker News Feed",
-  "id": "jid1-JAKHAfLpsTwcIg",
+  "name": "hackernews-feed",
+  "version": "0.6.0",
   "description": "Have a quick peek at the current Hacker News front page",
+  "main": "index.js",
   "author": "Nishanth Vijayan",
-  "license": "MPL 2.0",
-  "version": "0.5.4"
+  "engines": {
+    "firefox": ">=38.0a1",
+    "fennec": ">=38.0a1"
+  },
+  "license": "GPLv3",
+  "keywords": [
+    "hn", "hacker", "hackernews", "coder"
+  ]
 }
