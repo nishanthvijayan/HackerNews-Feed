@@ -3,7 +3,6 @@ var panels = require("sdk/panel");
 var self = require("sdk/self");
 var tabs = require("sdk/tabs");
 
-
 var newsfeed = panels.Panel({
   width: 475,
   height: 100,
@@ -11,6 +10,17 @@ var newsfeed = panels.Panel({
   contentScriptFile: [self.data.url("jquery.js"),self.data.url("popup.js")]
 });
 
+newsfeed.port.on("postClicked", function (text) {
+  tabs.open(text);
+});
+
+newsfeed.port.on("resizePanel", function () {
+  newsfeed.resize(475,500);
+});
+
+var displayPopup = function(){
+  newsfeed.show({ position: button });
+};
 
 var button = buttons.ActionButton({
   id: "HackerNews-feed",
@@ -22,23 +32,11 @@ var button = buttons.ActionButton({
     "64": "./icon48.png",
     "128":"./icon128.png"
   },
-  onClick: popup 
+  onClick: displayPopup
 })
-
-function popup(){
-  newsfeed.show({ position: button });
- };
 
 exports.main = function (options, callbacks) {
     if(options.loadReason === 'install' || options.loadReason === 'upgrade') {
       tabs.open("https://github.com/nishanthvijayan/hackernews-feed/");
     }
 };
-
-newsfeed.port.on("postClicked", function (text) {
-  tabs.open(text);
-});
-
-newsfeed.port.on("resizePanel", function () {
-  newsfeed.resize(475,500);
-});
