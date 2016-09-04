@@ -7,7 +7,7 @@ var newsfeed = panels.Panel({
   width: 475,
   height: 100,
   contentURL: self.data.url('popup.html'),
-  contentScriptFile: [self.data.url('jquery.js'),self.data.url('popup.js')]
+  contentScriptFile: [self.data.url('jquery-3.1.0.min.js'),self.data.url('popup.js')]
 });
 
 newsfeed.port.on('postClicked', function (text) {
