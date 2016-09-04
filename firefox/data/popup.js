@@ -1,118 +1,143 @@
-function putdata(res)
-{ 
-  // removes the present posts
+var clearPosts = function(){
   $("#content > li").remove();
   $("#content > hr").remove();
+};
 
-  $.each(res,function(i,post){
+var appendPostToList = function(post){
+  document.getElementById("content").appendChild(post);
+  document.getElementById("content").appendChild(document.createElement("hr"));
+};
+
+var renderTitle = function(index, post){
+  var titleNode = document.createElement("h3");
+  titleNode.data = (post.url.substring(0, 4) == "item") ? 'https://news.ycombinator.com/' + post.url : post.url;
+
+  var titleText = document.createTextNode((index + 1) + ".  " + post.title);
+  titleNode.appendChild(titleText);
+
+  return titleNode;
+};
+
+var renderDomainLink = function(post){
+  var domainLinkNode = document.createElement("span");
+  domainLinkNode.className = "detail";
+
+  var domainLinkText = document.createTextNode('(' + post.domain + ')');
+  domainLinkNode.appendChild(domainLinkText);
+
+  return domainLinkNode;
+}
+
+var renderDetails = function(post){
+    var detailsNode = document.createElement("h5");
+
+    var score = (post.points != null) ? post.points + '▲ ' : '';
+    var comments = (post.comments_count == '1') ? ' • ' + post.comments_count + ' comment ' : ' • ' + post.comments_count + ' comments ';
+    var detailsText = document.createTextNode(score + ' ' + comments);
+
+    detailsNode.appendChild(detailsText);
+    detailsNode.data = "https://news.ycombinator.com/item?id=" + post.id;
+    detailsNode.className = "detail";
+
+    return detailsNode;
+};
+
+var renderTime = function(post){
+  var timeNode = document.createElement("span");
+  timeNode.className = "detail";
+
+  var timeText = document.createTextNode(' | ' + post.time_ago);
+  timeNode.appendChild(timeText);
+
+  return timeNode;
+};
+
+function renderPosts(posts)
+{
+  clearPosts();
+
+  $.each(posts, function(index, post){
 
     var node = document.createElement("li");
+    node.appendChild(renderTitle(index, post));
 
-    var nameText = document.createTextNode((i+1)+".  "+post.title);
-    var nameNode = document.createElement("h3");
-    if(post.url.substring(0,4) == "item")nameNode.data = 'https://news.ycombinator.com/'+post.url;
-    else nameNode.data = post.url;
-    nameNode.appendChild(nameText);
-    node.appendChild(nameNode);
-
-    if(post.type=='link'){
-      var domainText = document.createTextNode('('+post.domain+')');
-      var domainNode = document.createElement("span");
-      domainNode.className = "detail";
-      domainNode.appendChild(domainText);
-      node.appendChild(domainNode);
+    if(post.type == 'link'){
+      node.appendChild(renderDomainLink(post));
       node.appendChild(document.createElement("br"));
     }
+
     node.appendChild(document.createElement("br"));
 
-    score = (post.points!=null) ? post.points + '▲ ' : '';
-    comments = (post.comments_count=='1') ? ' • '+post.comments_count + ' comment ' : ' • '+post.comments_count + ' comments ';
-    detailText=document.createTextNode(score +' '+comments);
-    
-    var scoreNode = document.createElement("h5");
-    scoreNode.appendChild(detailText);
-    scoreNode.data = "https://news.ycombinator.com/item?id="+post.id;
-    scoreNode.className = "detail";
-    node.appendChild(scoreNode);
+    node.appendChild(renderDetails(post));
 
-    var timeText = document.createTextNode(' | '+post.time_ago);
-    var timeNode = document.createElement("span");
-    timeNode.className = "detail";
-    timeNode.appendChild(timeText);
-    node.appendChild(timeNode);
+    node.appendChild(renderTime(post));
+
     node.appendChild(document.createElement("br"));
-    
-    document.getElementById("content").appendChild(node);
-    document.getElementById("content").appendChild(document.createElement("hr"));
+
+    appendPostToList(node);
   });
 }
 
 function fetchdata(){
-  
-  imgToggle();
+  toggleLoadingAnimation();
   req =  new XMLHttpRequest();
-  req.open("GET",'http://node-hnapi.herokuapp.com/news',true);
+  req.open("GET", 'http://node-hnapi.herokuapp.com/news', true);
   req.send();
   req.onload = function(){
     self.port.emit("resizePanel");
-    res = JSON.parse(req.responseText);
-    imgToggle();
-    putdata(res);
+    posts = JSON.parse(req.responseText);
+    toggleLoadingAnimation();
+    renderPosts(posts);
   };
   req.onerror = function(){
-    imgToggle();
+    toggleLoadingAnimation();
   }
 }
 
 // toggles between the loading gif,reload icon.
-function imgToggle(){
+function toggleLoadingAnimation(){
   src = $('.loading').attr('src');
-  if(src=="img/refresh-white.png") $(".loading").attr("src","img/ajax-loader.gif");
-  else $(".loading").attr("src","img/refresh-white.png");
+  if(src=="img/refresh-white.png") $(".loading").attr("src", "img/ajax-loader.gif");
+  else $(".loading").attr("src", "img/refresh-white.png");
 }
 
 $(document).ready(function(){
-  
-  fetchdata();
-  // update feeds every 5 minutes
-  setInterval(function(){
-    fetchdata() }, 300000)
 
+  fetchdata();
+  setInterval(fetchdata, 300000);
 
   //sends "link to be opened" to main.js
-  $("body").on('click',"li > h3", function(){
-    self.port.emit("postClicked",this.data);
+  $("body").on('click', "li > h3", function(){
+    self.port.emit("postClicked", this.data);
     return false;
-  });
-  
-  $("body").on('click',"h5", function(){
-    self.port.emit("postClicked",this.data);
-    return false;
-  });
-  
-  $("body").on('click',"a", function(){
-    self.port.emit("postClicked",$(this).attr('data'));
-    return false;
-  });
-  
-  $("body").on('click',".gh-btn", function(){
-    self.port.emit("postClicked", "https://github.com/nishanthvijayan/HackerNews-Feed");
-  });
-  
-  // this makes sure that fetchdata() is called only when the icon
-  // is reload icon and not when it is the loading gif.
-  $("body").on('click',".loading", function(){
-    src = $('.loading').attr('src');
-    if(src=="img/refresh-white.png") fetchdata();
   });
 
-	$("body").on('click',".up-btn", function(){
+  $("body").on('click', "h5", function(){
+    self.port.emit("postClicked", this.data);
+    return false;
+  });
+
+  $("body").on('click', "a", function(){
+    self.port.emit("postClicked", $(this).attr('data'));
+    return false;
+  });
+
+  $("body").on('click', ".gh-btn", function(){
+    self.port.emit("postClicked", "https://github.com/nishanthvijayan/HackerNews-Feed");
+  });
+
+  // this makes sure that fetchdata() is called only when the icon
+  // is reload icon and not when it is the loading gif.
+  $("body").on('click', ".loading", function(){
+    src = $('.loading').attr('src');
+    if(src == "img/refresh-white.png") fetchdata();
+  });
+
+  $("body").on('click', ".up-btn", function(){
     window.scrollTo(0, 0);
   });
 
   addEventListener('scroll', function(){
-    if($(".up-btn").css("display")=="none")$(".up-btn").show();
+    if($(".up-btn").css("display")=="none") $(".up-btn").show();
   });
-
 });
-
