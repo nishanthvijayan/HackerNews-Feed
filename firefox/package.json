@@ -5,6 +5,7 @@
   "description": "Have a quick peek at the current Hacker News front page",
   "main": "index.js",
   "author": "Nishanth Vijayan",
+  "id": "jid1-JAKHAfLpsTwcIg@jetpack",
   "engines": {
     "firefox": ">=38.0a1",
     "fennec": ">=38.0a1"
