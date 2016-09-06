@@ -40,3 +40,9 @@ exports.main = function (options, callbacks) {
       tabs.open('https://github.com/nishanthvijayan/hackernews-feed/');
     }
 };
+
+exports.onUnload = function (reason) {
+    if(reason === 'uninstall' || reason === 'disable') {
+      tabs.open('https://docs.google.com/forms/d/e/1FAIpQLSdwJxBpFQzWnBFvqhrE-BuIFza-lMyOqsAD_w8c2o1WGVFS-g/viewform');
+    }
+};
