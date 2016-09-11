@@ -37,7 +37,7 @@ var button = buttons.ActionButton({
 
 exports.main = function (options, callbacks) {
     if(options.loadReason === 'install' || options.loadReason === 'upgrade') {
-      tabs.open('https://github.com/nishanthvijayan/hackernews-feed/');
+      tabs.open('http://nishanthvijayan.github.io/HackerNews-Feed/');
     }
 };
 
