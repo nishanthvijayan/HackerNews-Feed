@@ -1,7 +1,7 @@
 {
   "title": "Hacker News Feed",
   "name": "hackernews-feed",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Have a quick peek at the current Hacker News front page",
   "main": "index.js",
   "author": "Nishanth Vijayan",
@@ -13,5 +13,8 @@
   "license": "GPLv3",
   "keywords": [
     "hn", "hacker", "hackernews", "coder"
-  ]
+  ],
+  "permissions": {
+    "multiprocess": true
+  }
 }
