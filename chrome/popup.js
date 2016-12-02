@@ -98,21 +98,53 @@ $(document).ready(function(){
     chrome.tabs.create({url: this.data});
     return false;
   });
+
+  $("body").on('mousedown',"li > h3", function(e){
+  	if( e.which == 2 ) {
+  		chrome.tabs.create({url: this.data});
+   	}
+    return false;
+  });
   
   $("body").on('click',"h5", function(){
     chrome.tabs.create({url: this.data});
     return false;
   });
-  
+
+  $("body").on('mousedown',"h5", function(e){
+  	if( e.which == 2 ) {
+  		chrome.tabs.create({url: this.data});
+   	}
+    return false;
+  });
+
   $("body").on('click',"header > h2", function(){
     chrome.tabs.create({ url: 'https://news.ycombinator.com/' });
     return false;
   });
 
-  $("body").on('click',".gh-btn", function(){
-    chrome.tabs.create({url: "https://github.com/nishanthvijayan/HackerNews-Feed"});
+  $("body").on('mousedown',"header > h2", function(e){
+  	if( e.which == 2 ) {
+  		chrome.tabs.create({ url: 'https://news.ycombinator.com/' });
+   	}
     return false;
   });
+
+  $("body").on('click',".gh-btn", function(){
+   	chrome.tabs.create({url: "https://github.com/nishanthvijayan/HackerNews-Feed"});
+    return false;
+  });
+
+  $("body").on('mousedown',".gh-btn", function(e){
+  	if( e.which == 2 ) {
+   		chrome.tabs.create({url: "https://github.com/nishanthvijayan/HackerNews-Feed"});
+   	}
+    return false;
+  });
+
+
+
+
   // this makes sure that fetchdata() is called only when the icon
   // is reload icon and not when it is the loading gif.
   $("body").on('click',".loading", function(){
