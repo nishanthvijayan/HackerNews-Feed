@@ -55,6 +55,17 @@ header > h2:hover {
   width: 22px;
 }
 
+.up-btn {
+  cursor: pointer;
+  position: absolute;
+  margin-top: 15px;
+  left: 5%;
+  height: 22px;
+  width: 22px;
+  border-radius: 50%;
+  border: 2px solid #fbe5c1;
+}
+
 li {
   padding: 15px;
   list-style-type: none;

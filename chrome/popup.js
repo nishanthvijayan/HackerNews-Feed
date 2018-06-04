@@ -142,7 +142,9 @@ $(document).ready(function(){
     return false;
   });
 
-
+  $("body").on('click',".up-btn", function(){
+    window.scroll(0,0);  
+  });
 
 
   // this makes sure that fetchdata() is called only when the icon
