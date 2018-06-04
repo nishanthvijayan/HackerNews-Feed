@@ -85,13 +85,13 @@ $(document).ready(function(){
   else{
     // cache is fresh
     putdata(JSON.parse(localStorage.cache));
-    if(localStorage.scrollTop){
-      document.body.scrollTop = localStorage.scrollTop;
+    if(localStorage.scrollPosition){
+      window.scroll(0, localStorage.scrollPosition);
     }
   }
 
   addEventListener('scroll', function(){
-    localStorage.scrollTop = document.body.scrollTop;
+    localStorage.scrollPosition = window.scrollY;
   });
 
   $("body").on('click',"li > h3", function(){
