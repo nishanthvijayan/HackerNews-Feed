@@ -16,14 +16,8 @@ module.exports = function(grunt) {
       copy: {
         main: {
           files: [
-            { expand: true, cwd: 'src/img', src: ['*'], dest: 'build/chrome/img/', filter: 'isFile' },
-            { expand: true, cwd: 'src/img', src: ['*'], dest: 'build/firefox/img/', filter: 'isFile' },
-
-            { expand: true, cwd: 'src/', src: ['manifest.json'], dest: 'build/chrome/' },
-            { expand: true, cwd: 'src/', src: ['manifest.json'], dest: 'build/firefox/'},
-
-            { expand: true, cwd: 'src/', src: ['popup.html'], dest: 'build/chrome/' },
-            { expand: true, cwd: 'src/', src: ['popup.html'], dest: 'build/firefox/'},
+            { expand: true, cwd: 'src/', src: ['manifest.json', 'popup.html', 'img/*'], dest: 'build/chrome/' },
+            { expand: true, cwd: 'src/', src: ['manifest.json', 'popup.html', 'img/*'], dest: 'build/firefox/'},
 
             { expand: true, cwd: 'temp/', src: ['popup_bundle.js'], dest: 'build/chrome/js' },
             { expand: true, cwd: 'temp/', src: ['popup_bundle.js'], dest: 'build/firefox/js'},
