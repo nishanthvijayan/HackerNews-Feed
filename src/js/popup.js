@@ -1,3 +1,5 @@
+var jquery = require("jquery");
+
 function putdata(res)
 { 
   // removes the present posts

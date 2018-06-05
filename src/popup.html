@@ -1,15 +1,16 @@
 <!doctype html>
 <html>
   <head>
-  	<meta charset="utf-8" />
+    <meta charset="utf-8" />
     <title>Hacker News</title>
-    <link rel="stylesheet" type="text/css" href="popup.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="js/popup.js"></script>
   </head>
-  <body>
+  <body style="min-height: 200px">
     <div class="fixed">
       <header>
-        <img class="up-btn" src="img/up.png"></img>
-        <h3><a data='https://news.ycombinator.com/'>Hacker News</a></h3>
+        <img class="up-btn" src="img/up.png" title="Scroll to top"></img>
+        <h2>Hacker News</h2>
         <img class="gh-btn" src="img/github.png"></img>
         <img class="loading" src="img/refresh-white.png" />
       </header>
@@ -18,3 +19,4 @@
     <div id="content"></div>
   </body>
 </html>
+

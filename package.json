@@ -1,0 +1,28 @@
+{
+  "name": "hackernews-feed",
+  "version": "0.2.0",
+  "description": "Have a quick peek at the top posts on Hacker news.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nishanthvijayan/HackerNews-Feed.git"
+  },
+  "author": "Nishanth Vijayan (github @nishanthvijayan)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nishanthvijayan/HackerNews-Feed/issues"
+  },
+  "homepage": "https://github.com/nishanthvijayan/HackerNews-Feed#readme",
+  "dependencies": {
+    "jquery": "^3.3.1"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^4.5.1",
+    "webpack": "^4.10.2",
+    "webpack-command": "^0.2.0"
+  }
+}
