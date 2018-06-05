@@ -3,7 +3,10 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
       pkg: grunt.file.readJSON('package.json'),
-      clean: ['build', 'clean'],
+      clean: {
+        prebuild: ['build', 'temp'],
+        postbuild: ['temp']
+      },
       browserify: {
           build: {
               src: "src/js/popup.js",
@@ -40,5 +43,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-browserify');
 
-    grunt.registerTask('default', ['clean', 'browserify','copy']);
+    grunt.registerTask('default', ['clean:prebuild', 'browserify','copy', 'clean:postbuild']);
 }
