@@ -1,4 +1,4 @@
-var jquery = require("jquery");
+var $ = require("jquery");
 
 function putdata(res)
 { 

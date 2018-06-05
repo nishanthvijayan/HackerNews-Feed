@@ -21,8 +21,8 @@
     "jquery": "^3.3.1"
   },
   "devDependencies": {
-    "copy-webpack-plugin": "^4.5.1",
-    "webpack": "^4.10.2",
-    "webpack-command": "^0.2.0"
+    "grunt": "^1.0.3",
+    "grunt-browserify": "^5.3.0",
+    "grunt-contrib-copy": "^1.0.0"
   }
 }
