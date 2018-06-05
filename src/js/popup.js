@@ -124,6 +124,12 @@ $(document).ready(() => {
 
   addEventListener('scroll', () => {
     localStorage.scrollPosition = window.scrollY;
+    
+    if (window.scrollY !== 0) {
+      $('.up-btn').show();
+    } else {
+      $('.up-btn').hide();
+    }
   });
 
   $('body').on('click', 'li > h3', function () {

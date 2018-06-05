@@ -62,6 +62,7 @@ header > h2:hover {
   left: 5%;
   height: 22px;
   width: 22px;
+  display: none;
   border-radius: 50%;
   border: 2px solid #fbe5c1;
 }
