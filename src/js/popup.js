@@ -93,7 +93,7 @@ function fetchdata(){
 	  imgToggle();
 
     res = JSON.parse(req.responseText);
-	  putdata(res);
+	  renderPosts(res);
 
     now = (new Date()).getTime()/1000;
 	  localStorage.cache  = req.responseText;
@@ -120,7 +120,7 @@ $(document).ready(function(){
   }
   else{
     // cache is fresh
-    putdata(JSON.parse(localStorage.cache));
+    renderPosts(JSON.parse(localStorage.cache));
     if(localStorage.scrollPosition){
       window.scroll(0, localStorage.scrollPosition);
     }
