@@ -34,8 +34,9 @@ const renderDomainLink = function (post) {
 };
 
 
-const renderDetails = function (post) {
+const renderScoreAndComments = function (post) {
   const detailsNode = document.createElement('h5');
+  detailsNode.className = 'detail';
 
   const score = (post.points != null) ? `${post.points}▲ ` : '';
   const comments = (post.comments_count == '1') ? ` • ${post.comments_count} comment ` : ` • ${post.comments_count} comments `;
@@ -43,7 +44,6 @@ const renderDetails = function (post) {
 
   detailsNode.appendChild(detailsText);
   detailsNode.data = `https://news.ycombinator.com/item?id=${post.id}`;
-  detailsNode.className = 'detail';
 
   return detailsNode;
 };
@@ -69,11 +69,10 @@ function renderPosts(posts) {
 
     if (post.type == 'link') {
       node.appendChild(renderDomainLink(post));
-      node.appendChild(document.createElement('br'));
     }
 
     node.appendChild(document.createElement('br'));
-    node.appendChild(renderDetails(post));
+    node.appendChild(renderScoreAndComments(post));
     node.appendChild(renderTime(post));
     node.appendChild(document.createElement('br'));
 
