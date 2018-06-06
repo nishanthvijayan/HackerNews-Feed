@@ -69,6 +69,7 @@ function renderPosts(posts) {
 
     if (post.type == 'link') {
       node.appendChild(renderDomainLink(post));
+      node.appendChild(document.createElement('br'));
     }
 
     node.appendChild(document.createElement('br'));
