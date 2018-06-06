@@ -3,7 +3,7 @@
 
   "name": "Hacker News Feed",
   "description": "Have a quick peek at the top posts on Hacker news. ",
-  "version": "0.1.1",
+  "version": "0.7.0",
 
   "permissions": [
     "http://node-hnapi.herokuapp.com/",
