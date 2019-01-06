@@ -1,4 +1,3 @@
-[![Download stats](https://img.shields.io/badge/downloads-3000%2B-green.svg?style=flat-square)]()
 HackerNews-Feed
 ===============
   
